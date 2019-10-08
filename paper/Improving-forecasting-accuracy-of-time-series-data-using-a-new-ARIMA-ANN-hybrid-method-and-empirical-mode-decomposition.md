@@ -244,19 +244,11 @@ Finally, nonlinear modeling ANN is used to implement functional relationship bet
 
 
 
-$$
-\begin{aligned} S_{t}^{1} &=\left(y_{t-1}, y_{t-2}, \ldots, y_{t-a}\right) \\ S_{t}^{2} &=\left(r_{t-1}, r_{t-2}, \ldots, r_{t-b}\right) \\ \hat{y}_{t} &=f\left(S_{t}^{1}, \hat{L}_{t}, S_{t}^{2}\right) \\ \hat{y}_{t} &=f\left(y_{t-1}, y_{t-2}, y_{t-a}, \hat{L}_{t}, r_{t-1}, r_{t-2}, \ldots, r_{t-b}\right) \end{aligned}
-$$
-
-
-
-
-
 最后，非线性建模ANN用于实现组件之间的功能关系，如公式4所示。过去的观测数据$y_{t-1}, y_{t-2}, \dots, y_{t-a}$，当前ARIMA预测的分解后的固定数据$L_t$的预测结果以及数据分解$r_{t-1},r_{t-2}, \dots, r_{t-b}$的残差如公式8所示被馈送到ANN：
 
 
 $$
-\begin{aligned} S_{t}^{1} &=\left(y_{t-1}, y_{t-2}, \ldots, y_{t-a}\right) \\ S_{t}^{2} &=\left(r_{t-1}, r_{t-2}, \ldots, r_{t-b}\right) \\ \hat{y}_{t} &=f\left(S_{t}^{1}, \hat{L}_{t}, S_{t}^{2}\right) \\ \hat{y}_{t} &=f\left(y_{t-1}, y_{t-2}, y_{t-a}, \hat{L}_{t}, r_{t-1}, r_{t-2}, \ldots, r_{t-b}\right) \end{aligned}
+ S_{t}^{1} =\left(y_{t-1}, y_{t-2}, \ldots, y_{t-a}\right) \\ S_{t}^{2} =\left(r_{t-1}, r_{t-2}, \ldots, r_{t-b}\right) \\ \hat{y}_{t} =f\left(S_{t}^{1}, \hat{L}_{t}, S_{t}^{2}\right) \\ \hat{y}_{t} =f\left(y_{t-1}, y_{t-2}, y_{t-a}, \hat{L}_{t}, r_{t-1}, r_{t-2}, \ldots, r_{t-b}\right)
 $$
 
 
