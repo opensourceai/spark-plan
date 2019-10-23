@@ -1,8 +1,10 @@
-原文：http://karpathy.github.io/2019/04/25/recipe/ ，[md](A-Recipe-for-Training-Neural-Networks.md)
+原文： http://karpathy.github.io/2016/05/31/rl/ 
 
 作者：Andrej Karpathy
 
 翻译：[@Chen Quan](https://github.com/chenquan )
+
+# 深度强化学习：Pongs from Pixels
 
 这是有关“强化学习”（RL）的早就应该发表的博客文章。RL很热！您可能已经注意到，计算机现在可以自动[学习玩ATARI游戏](http://www.nature.com/nature/journal/v518/n7540/abs/nature14236.html)（从原始游戏像素开始！），它们在[Go](http://googleresearch.blogspot.com/2016/01/alphago-mastering-ancient-game-of-go.html)（译者注：Alpha Go）上击败了世界冠军，模拟的四足动物正在学习[奔跑和跳跃](https://www.cs.ubc.ca/~van/papers/2016-TOG-deepRL/index.html)，机器人正在学习如何执行[复杂的操纵任务](http://www.bloomberg.com/features/2015-preschool-for-robots/)，违了显式编程。事实证明，所有这些进展都属于RL研究的范畴。在过去的一年中，我自己也对RL产生了兴趣：我研究了[Richard Sutton的书](https://webdocs.cs.ualberta.ca/~sutton/book/the-book.html)，阅读了[David Silver的课程](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html)，观看了[John Schulmann的演讲](https://www.youtube.com/watch?v=oPGVsoBonLM)，[用Javascript](http://cs.stanford.edu/people/karpathy/reinforcejs/)编写的[RL库](http://cs.stanford.edu/people/karpathy/reinforcejs/)，整个夏天，在DeepMind的DeepRL小组实习，最近又在新RL基准测试工具包[OpenAI Gym](https://gym.openai.com/)的设计/开发投入了一些[精力](https://gym.openai.com/)。因此，我肯定已经从事了至少一年，但直到现在我还没有写一篇简短的文章来介绍RL为何如此重要，它的意义，发展的方式以及发展的方向去。
 
