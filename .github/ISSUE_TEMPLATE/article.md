@@ -8,5 +8,5 @@ assignees: ''
 ---
 
 **文章(article)：**
-- *作者(author)：*
-- *链接(link)：*
+- 作者(author)：
+- 链接(link)：
