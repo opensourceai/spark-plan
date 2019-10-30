@@ -1,0 +1,53 @@
+众所周知，如果此间有一群用户以及一些项目（比如电影、歌曲或者某些别的什么活儿之类的），每个用户都将会对对某些题目感兴趣。<br>
+因此响应客户需求，我们需要对每个用户推荐一些项目（不妨把客户请求推荐的项目数量设为x）<br>
+之后用户将会对结果通过mean average precisionor （或者简称MAP）, metric对结果进行评估<br>
+确切地说，MAP @ x 就是在让我们为某个用户推荐“一定数量（以下用 x 代替）的项目”<br>
+照应题目，接下来准确地来讲述什么是MAP。<br>
+
+# 什么是MAP？
+
+首先，我们先对其中的 M 进行剖析，此M既为mean，概括为所有用户的AP（average precisions）的均值，<br>
+将此mean结合Average Precision由此而来Mean Average Precision。<br>
+举个例子，假设我们有1000个用户，我们将每个用户的APs求和，再将这个“和”除以1000个客户量。这就是MAP的由来。<br>
+<br>
+其次，我们讨论什么是AP（Average Precision），<br>
+实际来讲我们没必要完全了解，但是我们需要了解关于AP的以下几点就够了：<br>
+>我们最多能为每个用户推荐 x 个项目<br>
+>我们为客户提供的推荐应该尽量达到 x 个<br>
+>事项顺序非常重要，首要提供相关性最高的推荐，之后才是我们觉得相关性不那么高的推荐<br>
+<br>
+因此依照上述条件顺序可以大体上选出x个最好的推荐项目<br>
+<br>
+接下来是临一种理解AP（Average Precision）的方式。<br>
+维基百科上说AP（Average Precision）是用来对文件检索进行评分的，<br>
+就好比，我们在谷歌搜索框输入某查找项，它会反馈我们十个相关项，<br>
+对于用户而言，这十个相关项都围绕搜索框内的查找项是最好的<br>
+然而不尽人意的时候总是存在的，比如，其中有五个相关项与查找项相差甚远，那么最好先显示另外五个更精确的相关项。<br>
+如果不按照这样排列，前五个先展示相关性更低的选项，那么相关性高的就得从第六个开始，那这样我们都会觉得不太行。<br>
+AP指数就是反应这一现象的。<br>
+<br>
+这个名字对我们有误导性；我们更推崇“依次事项的 相关值”一类。<br>
+<br>
+
+>此公式为: sum i=1:x of (precision at i * change in recall at i) <br>
+
+precision at i 是在第一次i个推荐中相关性高的推荐所占的百分比。<br>
+如果在i处的项目是精确的（对每个精确的项目而言都是如此），那么Change in recall 是 1/x ，否则是0。<br>
+假设相关项的数目大于或等于x:r>=x。<br>
+如果不正确，则每个精确的i处的recall更改为1/r，而不是1/x。<br>
+<br>
+对于感兴趣的人，Ben Hamner为kaggle实现了一系列度量，其中包括各种语言的MAP和AP。<br>
+您可能需要查看一些测试用例（在Matlab中）来检查您对如何计算AP的理解。<br>
+>例如 test_case(1:5, [6 4 7 1 2], 2, 0.25);
+<br>
+这意味着实际项目是1:5，即[1 2 3 4 5]。我们推荐[6 4 7 1 2]，我们通过交集得出4，1和2为正确项，但是其中依然有一些不正确的联想项。<br>
+它就是AP@2<br>
+所以，事实上只有两个最初的预测是重要的：6和4。<br>
+第一个是错误的，所以precision@1为0。第二个是对的，所以precision@2是0.5。则change in recall分别为0和0.5（即1/x），<br>
+因此AP@2 = 0 * 0 + 0.5 * 0.5 = 0.25<br>
+<br>
+<br>
+<br>
+Posted by Zygmunt Z. @ 2012-08-09 @ Kaggle, basics <br>
+From [FastML]:http://fastml.com/what-you-wanted-to-know-about-mean-average-precision<br>
+Translated by Nansen @ 2019-10-30 @ Cynomys,ML<br>
