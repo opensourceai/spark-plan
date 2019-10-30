@@ -271,7 +271,7 @@ regre = xgb.XGBRegressor(max_depth=10,
 			
 # 有了gridsearch我们便不需要fit函数
 gsearchCV = GridSearchCV(regre, param_grid=parameters, scoring='r2', cv=3)
-gsearchCV.fit(train_x, train_y)
+gsearchCV.fit(train_X, train_y)
 
 print("Best score: %0.3f" % gsearchCV.best_score_)
 print("Best parameters set:")
