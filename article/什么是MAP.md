@@ -1,14 +1,20 @@
+原文作者： Zygmunt Z. | 2012-08-09 | Kaggle, basics <br>
+原文链接： http://fastml.com/what-you-wanted-to-know-about-mean-average-precision<br>
+翻&emsp;&emsp;译： Nansen | 2019-10-30 | Cynomys,ML<br>
+
+# What you wanted to know about Mean Average Precision ?
+
 众所周知，如果此间有一群用户以及一些项目（比如电影、歌曲或者某些别的什么活儿之类的），每个用户都将会对对某些题目感兴趣。<br>
 因此响应客户需求，我们需要对每个用户推荐一些项目（不妨把客户请求推荐的项目数量设为x）<br>
 之后用户将会对结果通过mean average precisionor （或者简称MAP）, metric对结果进行评估<br>
 确切地说，MAP @ x 就是在让我们为某个用户推荐“一定数量（以下用 x 代替）的项目”<br>
 照应题目，接下来准确地来讲述什么是MAP。<br>
 
-# 什么是MAP？
+## 什么是MAP？
 
 首先，我们先对其中的 M 进行剖析，此M既为mean，概括为所有用户的AP（average precisions）的均值，<br>
 将此mean结合Average Precision由此而来Mean Average Precision。<br>
-举个例子，假设我们有1000个用户，我们将每个用户的APs求和，再将这个“和”除以1000个客户量。这就是MAP的由来。<br>
+举个例子，假设我们有1000个用户，我们将每个用户的AP求和，再将这个“和”除以1000个客户量。这就是MAP的由来。<br>
 <br>
 其次，我们讨论什么是AP（Average Precision），<br>
 实际来讲我们没必要完全了解，但是我们需要了解关于AP的以下几点就够了：<br>
@@ -32,7 +38,7 @@ AP指数就是反应这一现象的。<br>
 >此公式为: sum i=1:x of (precision at i * change in recall at i) <br>
 
 precision at i 是在第一次i个推荐中相关性高的推荐所占的百分比。<br>
-如果在i处的项目是精确的（对每个精确的项目而言都是如此），那么Change in recall 是 1/x ，否则是0。<br>
+如果在i处的项目是精确的（对每个精确的项目而言都是如此），那么Change in recall at i 是 1/x ，否则是0。<br>
 假设相关项的数目大于或等于x:r>=x。<br>
 如果不正确，则每个精确的i处的recall更改为1/r，而不是1/x。<br>
 <br>
@@ -46,8 +52,3 @@ precision at i 是在第一次i个推荐中相关性高的推荐所占的百分�
 第一个是错误的，所以precision@1为0。第二个是对的，所以precision@2是0.5。则change in recall分别为0和0.5（即1/x），<br>
 因此AP@2 = 0 * 0 + 0.5 * 0.5 = 0.25<br>
 <br>
-<br>
-<br>
-Posted by Zygmunt Z. @ 2012-08-09 @ Kaggle, basics <br>
-From [FastML]:http://fastml.com/what-you-wanted-to-know-about-mean-average-precision<br>
-Translated by Nansen @ 2019-10-30 @ Cynomys,ML<br>
