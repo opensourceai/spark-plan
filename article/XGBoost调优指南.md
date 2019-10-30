@@ -89,51 +89,51 @@ XGBoost算法可以给预测模型带来能力的提升。它具有很多优势�
 
 1. `num_boosting_rounds`
 这是生成的最大树的数目，也是最大的迭代次数。
-
-1. `learning_rate(或eta)[默认0.3]`
+2. `learning_rate(或eta)[默认0.3]`
 和GBM中的 learning rate 参数类似。
 通过减少每一步的权重，可以提高模型的鲁棒性。
 典型值为0.01-0.2。
-2. `min_child_weight[默认1]`
+3. `min_child_weight[默认1]`
 决定最小叶子节点样本权重和。
 和GBM的 min_child_leaf 参数类似，但不完全一样。XGBoost的这个参数是最小样本权重的和，而GBM参数是最小样本总数。
 这个参数用于避免过拟合。当它的值较大时，可以避免模型学习到局部的特殊样本。
 但是如果这个值过高，会导致欠拟合。这个参数需要使用CV来调整。
-3. `max_depth[默认6]`
+4. `max_depth[默认6]`
 和GBM中的参数相同，这个值为树的最大深度。
 这个值也是用来避免过拟合的。max_depth越大，模型会学到更具体更局部的样本。
 需要使用CV函数来进行调优。
 典型值：3-10
-4. `max_leaf_nodes`
+5. `max_leaf_nodes`
 树上最大的节点或叶子的数量。
 可以替代max_depth的作用。因为如果生成的是二叉树，一个深度为n的树最多生成n2n^2n 
 2 个叶子。
 如果定义了这个参数，GBM会忽略max_depth参数。
-5. `gamma[默认0]`
+6. `gamma[默认0]`
 在节点分裂时，只有分裂后损失函数的值下降了，才会分裂这个节点。Gamma指定了节点分裂所需的最小损失函数下降值。
 这个参数的值越大，算法越保守。这个参数的值和损失函数息息相关，所以是需要调整的。
-6. `max_delta_step[默认0]`
+7. `max_delta_step[默认0]`
 这参数限制每棵树权重改变的最大步长。如果这个参数的值为0，那就意味着没有约束。如果它被赋予了某个正值，那么它会让这个算法更加保守。
 通常，这个参数不需要设置。但是当各类别的样本十分不平衡时，它对逻辑回归是很有帮助的。
 这个参数一般用不到，但是你可以挖掘出来它更多的用处。
-7. `subsample[默认1]`
+8. `subsample[默认1]`
 和GBM中的subsample参数一模一样。这个参数控制对于每棵树，随机采样的比例。
 减小这个参数的值，算法会更加保守，避免过拟合。但是，如果这个值设置得过小，它可能会导致欠拟合。
 典型值：0.5-1
-8. `colsample_bytree[默认1]`
+9. `colsample_bytree[默认1]`
 和GBM里面的max_features参数类似。用来控制每棵随机采样的列数的占比(每一列是一个特征)。
 典型值：0.5-1
-9. `colsample_bylevel[默认1]`
+10. `colsample_bylevel[默认1]`
 用来控制树的每一级的每一次分裂，对列数的采样的占比。
 我个人一般不太用这个参数，因为subsample参数和colsample_bytree参数可以起到相同的作用。但是如果感兴趣，可以挖掘这个参数更多的用处。
-10. `lambda[默认1]`
+11. `lambda[默认1]`
 权重的L2正则化项。(和Ridge regression类似)。
 这个参数是用来控制XGBoost的正则化部分的。虽然大部分数据科学家很少用到这个参数，但是这个参数在减少过拟合上还是可以挖掘出更多用处的。
-11. `alpha[默认1]`
+12. `alpha[默认1]`
 权重的L1正则化项。(和Lasso regression类似)。
 可以应用在很高维度的情况下，使得算法的速度更快。
-12. `scale_pos_weight[默认1]`
+13. `scale_pos_weight[默认1]`
 在各类别样本十分不平衡时，把这个参数设定为一个正值，可以使算法更快收敛。
+
 
  **学习目标参数**
 
@@ -175,6 +175,20 @@ XGBoost算法可以给预测模型带来能力的提升。它具有很多优势�
 - eta -> learning_rate
 - lambda -> reg_lambda
 - alpha -> reg_alpha
+
+**调优步骤**
+
+我们会使用和GBM中相似的方法。需要进行如下步骤：
+
+1.  选择较高的学习速率(learning rate)。一般情况下，学习速率的值为0.1。但是，对于不同的问题，理想的学习速率有时候会在0.05到0.3之间波动。选择对应于此学习速率的理想决策树数量。XGBoost有一个很有用的函数“cv”，这个函数可以在每一次迭代中使用交叉验证，并返回理想的决策树数量。
+
+2. 对于给定的学习速率和决策树数量，进行决策树特定参数调优(max_depth, min_child_weight, gamma, subsample, colsample_bytree)。在确定一棵树的过程中，我们可以选择不同的参数，待会儿我会举例说明。
+
+3. xgboost的正则化参数的调优。(lambda, alpha)。这些参数可以降低模型的复杂度，从而提高模型的表现。
+
+4. 降低学习速率，确定理想参数。
+
+
 
 ## 二.XGBoost案例
 
@@ -265,4 +279,6 @@ best_parameters = gsearchCV.best_estimator_.get_params()
 for param_name in sorted(parameters.keys()):
     print("\t%s: %r" % (param_name, best_parameters[param_name]))
 ```
+
+
 
