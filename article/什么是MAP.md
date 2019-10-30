@@ -1,5 +1,7 @@
 作者： Zygmunt Z. | 2012-08-09 | Kaggle, basics
+
 链接： http://fastml.com/what-you-wanted-to-know-about-mean-average-precision
+
 翻译： Nansen | 2019-10-30 | Cynomys,ML
 
 # What you wanted to know about Mean Average Precision ?
