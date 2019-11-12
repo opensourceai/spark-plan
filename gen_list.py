@@ -1,7 +1,7 @@
 import glob
 import os
 
-temple = """<!-- 由python 自动生成 -->
+temple = """<!-- 由 python 自动生成 -->
 # spark-plan
 星火计划-做AI领域的独家，所有文章旨在技术传播和交流学习，非商业用途。
 
