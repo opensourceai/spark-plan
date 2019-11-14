@@ -25,14 +25,13 @@ python gen_list.py
 """
 
 
-def gen_list(path=""):
+def gen_list(path:str):
+
     url_temple = "[{}]({})"
 
     paths = glob.glob("./{}/**/**.md".format(path), recursive=True)
-    print(paths)
     paths = [url_temple.format(os.path.basename(path)[:-3], path) for path in
              [path.replace("\\", "/")[2:] for path in paths if "README" not in path]]
-    print(paths)
 
     list_info = ""
     for path in paths:
