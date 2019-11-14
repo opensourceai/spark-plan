@@ -1,3 +1,9 @@
+原文：https://jalammar.github.io/illustrated-gpt2/
+
+作者：[Jay Alammar](https://jalammar.github.io/) 
+
+翻译：[*Quan Chen*](https://github.com/chenquan)
+
 # 图解GPT-2（可视化Transformer语言模型）
 
 ![img](img/openAI-GPT-2-3.png)
