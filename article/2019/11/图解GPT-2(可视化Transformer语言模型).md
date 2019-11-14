@@ -24,7 +24,7 @@
 
 ![img](img/gpt2-sizes-1573700411252.png)
 
-试验GPT-2的一种好方法是使用[AllenAI GPT-2 Explorer](https://gpt2.apps.allenai.org/?text=Joel is)。它使用GPT-2显示下一个单词的十个可能的预测（以及它们的概率得分）。您可以选择一个单词，然后查看下一个预测列表以继续撰写段落。
+试验GPT-2的一种好方法是使用[AllenAI GPT-2 Explorer](https://gpt2.apps.allenai.org/)。它使用GPT-2显示下一个单词的十个可能的预测（以及它们的概率得分）。您可以选择一个单词，然后查看下一个预测列表以继续撰写段落。
 
 ### Transformer语言建模
 
