@@ -28,6 +28,7 @@
 - [通过匹配感知特征学习隐式生成模型](article/2019/10/通过匹配感知特征学习隐式生成模型.md)
 - [Attention注意力机制](article/2019/11/Attention注意力机制.md)
 - [为什么预测需要无监督学习](article/2019/11/为什么预测需要无监督学习.md)
+- [可视化简介NumPy和数据表示](article/2019/11/可视化简介NumPy和数据表示.md)
 - [图解GPT-2(可视化Transformer语言模型)](article/2019/11/图解GPT-2(可视化Transformer语言模型).md)
 - [如何使用深度学习的词嵌入层-Keras](article/2019/11/如何使用深度学习的词嵌入层-Keras.md)
 - [异常检测算法](article/2019/11/异常检测算法.md)
