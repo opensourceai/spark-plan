@@ -2,12 +2,13 @@ python高级用法之  三大高阶内置函数介绍
 
 1 map函数
 
-​	map(square,list) map函数接收的两个参数 一个函数 一个序列
+​	map(square,list) map函数接收的两个参数 一个函数 一个序列  
 
-功能说明 ：利用传进去的函数将序列的值进行处理在返回一个列表内，但是其返回值为map 一个迭代器对象 需要转化为list，原理如下图
 
-![image-20191117193552078](C:\Users\Hq\AppData\Roaming\Typora\typora-user-images\image-20191117193552078.png)代码示例
+功能说明 ：利用传进去的函数将序列的值进行处理在返回一个列表内，但是其返回值为map 一个迭代器对象 需要转化为list  
 
+
+示例代码
 ```
 num=[1,2,3,4,5]
 def square(x):
@@ -35,9 +36,7 @@ print(list(map(lambda x:x.upper(),"amanda")))
 
 ​	 filter函数也是接收一个函数和一个序列的高阶函数，其主要功能是过滤。其返回值也是迭代器对象 
 
-![image-20191117193727436](C:\Users\Hq\AppData\Roaming\Typora\typora-user-images\image-20191117193727436.png)
-
-
+示例代码
 
 ```python
 names=["Alex","amanda","xiaowu"]
@@ -58,7 +57,7 @@ print(list(filter(lambda x:x.islower(),names)))
 
  reduce函数也是一个参数为函数，一个为可迭代对象的高阶函数，其返回值为一个值而不是迭代器对象，故其常用与叠加、叠乘等 
 
-![image-20191117193807736](C:\Users\Hq\AppData\Roaming\Typora\typora-user-images\image-20191117193807736.png)
+示例代码
 
 ```python
 #reduce函数不是内置函数，而是在模块functools中的函数，故需要导入
