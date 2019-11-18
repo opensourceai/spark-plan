@@ -1,5 +1,6 @@
 
-作者：QiangHe
+作者：QiangHe  
+
 邮箱:1422127065@qq.com
 
 python高级用法之三大高阶内置函数介绍
