@@ -4,7 +4,7 @@
 
 **python高级用法之-迭代器、生成器、装饰器**
 
-##### 1 &emsp; 迭代器  
+##### 1 .迭代器  
 
 
 ​		一般在python中可以使用for循环，对于像list，dict等都可以。但是他们称之为可迭代的对象，而不是迭代器。
@@ -60,7 +60,7 @@ for x in res:
 
 
 
-##### 3&emsp; 装饰器
+##### 3. 装饰器
 
 ​	 装饰器本质是一个Python函数，它可以让其它函数在没有任何代码变动的情况下增加额外功能 
 
@@ -88,7 +88,7 @@ end
 
 
 
-#### 4&emsp;  staticmethod和classmethod
+#### 4. staticmethod和classmethod
 
 ​	代码示例
 
