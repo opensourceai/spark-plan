@@ -45,7 +45,7 @@ driver.close()
 
 代码解释：
 
-```
+```python
 driver.find_elements_by_xpath#抓取所有的标签 注意是elements
 ```
 
