@@ -101,7 +101,7 @@ Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方�
 
 将一段文档传入BeautifulSoup 的构造方法,就能得到一个文档的对象, 可以传入一段字符串或一个文件句柄.
 
-```
+```python
 from bs4 import BeautifulSoup
  
 soup = BeautifulSoup(open("index.html"))
@@ -111,7 +111,7 @@ soup = BeautifulSoup("<html>data</html>")
 
 首先,文档被转换成Unicode,并且HTML的实例都被转换成Unicode编码
 
-```
+```python
 BeautifulSoup("Sacr&eacute; bleu!")
 <html><head></head><body>Sacré bleu!</body></html>
 ```
@@ -126,7 +126,7 @@ Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节�
 
 Tag 对象与XML或HTML原生文档中的tag相同:
 
-```
+```python
 soup = BeautifulSoup('<b class="boldest">Extremely bold</b>')
 tag = soup.b
 type(tag)
@@ -139,14 +139,14 @@ Tag有很多方法和属性,在 [遍历文档树](https://beautifulsoup.readthed
 
 每个tag都有自己的名字,通过 .name 来获取:
 
-```
+```python
 tag.name
 # u'b'
 ```
 
 如果改变了tag的name,那将影响所有通过当前Beautiful Soup对象生成的HTML文档:
 
-```
+```python
 tag.name = "blockquote"
 tag
 # <blockquote class="boldest">Extremely bold</blockquote>
@@ -156,21 +156,21 @@ tag
 
 一个tag可能有很多个属性. tag <b` `class="boldest"> 有一个 “class” 的属性,值为 “boldest” . tag的属性的操作方法与字典相同:
 
-```
+```python
 tag['class']
 # u'boldest'
 ```
 
 也可以直接”点”取属性, 比如: .attrs :
 
-```
+```python
 tag.attrs
 # {u'class': u'boldest'}
 ```
 
 tag的属性可以被添加,删除或修改. 再说一次, tag的属性操作方法与字典一样
 
-```
+```python
 tag['class'] = 'verybold'
 tag['id'] = 1
 tag
@@ -191,7 +191,7 @@ print(tag.get('class'))
 
 HTML 4定义了一系列可以包含多个值的属性.在HTML5中移除了一些,却增加更多.最常见的多值的属性是 class (一个tag可以有多个CSS的class). 还有一些属性 rel , rev , accept-charset , headers , accesskey . 在Beautiful Soup中多值属性的返回类型是list:
 
-```
+```python
 css_soup = BeautifulSoup('<p class="body strikeout"></p>')
 css_soup.p['class']
 # ["body", "strikeout"]
@@ -203,7 +203,7 @@ css_soup.p['class']
 
 如果某个属性看起来好像有多个值,但在任何版本的HTML定义中都没有被定义为多值属性,那么Beautiful Soup会将这个属性作为字符串返回
 
-```
+```python
 id_soup = BeautifulSoup('<p id="my id"></p>')
 id_soup.p['id']
 # 'my id'
@@ -211,7 +211,7 @@ id_soup.p['id']
 
 将tag转换成字符串时,多值属性会合并为一个值
 
-```
+```python
 rel_soup = BeautifulSoup('<p>Back to the <a rel="index">homepage</a></p>')
 rel_soup.a['rel']
 # ['index']
@@ -222,7 +222,7 @@ print(rel_soup.p)
 
 如果转换的文档是XML格式,那么tag中不包含多值属性
 
-```
+```python
 xml_soup = BeautifulSoup('<p class="body strikeout"></p>', 'xml')
 xml_soup.p['class']
 # u'body strikeout'
@@ -232,7 +232,7 @@ xml_soup.p['class']
 
 字符串常被包含在tag内.Beautiful Soup用 NavigableString 类来包装tag中的字符串:
 
-```
+```python
 tag.string
 # u'Extremely bold'
 type(tag.string)
@@ -241,7 +241,7 @@ type(tag.string)
 
 一个 NavigableString 字符串与Python中的Unicode字符串相同,并且还支持包含在 [遍历文档树](https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id18) 和 [搜索文档树](https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id27) 中的一些特性. 通过 unicode() 方法可以直接将 NavigableString 对象转换成Unicode字符串:
 
-```
+```python
 unicode_string = unicode(tag.string)
 unicode_string
 # u'Extremely bold'
@@ -251,7 +251,7 @@ type(unicode_string)
 
 tag中包含的字符串不能编辑,但是可以被替换成其它的字符串,用 [replace_with()](https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#replace-with) 方法:
 
-```
+```python
 tag.string.replace_with("No longer bold")
 tag
 # <blockquote>No longer bold</blockquote>
@@ -267,7 +267,7 @@ BeautifulSoup 对象表示的是一个文档的全部内容.大部分时候,可�
 
 因为 BeautifulSoup 对象并不是真正的HTML或XML的tag,所以它没有name和attribute属性.但有时查看它的 .name 属性是很方便的,所以 BeautifulSoup 对象包含了一个值为 “[document]” 的特殊属性 .name
 
-```
+```python
 soup.name
 # u'[document]'
 ```
@@ -276,7 +276,7 @@ soup.name
 
 Tag , NavigableString , BeautifulSoup 几乎覆盖了html和xml中的所有内容,但是还有一些特殊对象.容易让人担心的内容是文档的注释部分:
 
-```
+```python
 markup = "<b><!--Hey, buddy. Want to buy a used parser?--></b>"
 soup = BeautifulSoup(markup)
 comment = soup.b.string
@@ -286,14 +286,14 @@ type(comment)
 
 Comment 对象是一个特殊类型的 NavigableString 对象:
 
-```
+```python
 comment
 # u'Hey, buddy. Want to buy a used parser'
 ```
 
 但是当它出现在HTML文档中时, Comment 对象会使用特殊的格式输出:
 
-```
+```python
 print(soup.b.prettify())
 # <b>
 #  <!--Hey, buddy. Want to buy a used parser?-->
@@ -302,7 +302,7 @@ print(soup.b.prettify())
 
 Beautiful Soup中定义的其它类型都可能会出现在XML的文档中: CData , ProcessingInstruction , Declaration , Doctype .与 Comment 对象类似,这些类都是 NavigableString 的子类,只是添加了一些额外的方法的字符串独享.下面是用CDATA来替代注释的例子:
 
-```
+```python
 from bs4 import CData
 cdata = CData("A CDATA block")
 comment.replace_with(cdata)
@@ -317,7 +317,7 @@ print(soup.b.prettify())
 
 还拿”爱丽丝梦游仙境”的文档来做例子:
 
-```
+```python
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
     <body>
@@ -348,7 +348,7 @@ soup = BeautifulSoup(html_doc, 'html.parser')
 
 操作文档树最简单的方法就是告诉它你想获取的tag的name.如果想获取 <head> 标签,只要用 soup.head :
 
-```
+```python
 soup.head
 # <head><title>The Dormouse's story</title></head>
  
@@ -358,21 +358,21 @@ soup.title
 
 这是个获取tag的小窍门,可以在文档树的tag中多次调用这个方法.下面的代码可以获取<body>标签中的第一个<b>标签:
 
-```
+```python
 soup.body.b
 # <b>The Dormouse's story</b>
 ```
 
 通过点取属性的方式只能获得当前名字的第一个tag:
 
-```
+```python
 soup.a
 # <a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
 ```
 
 如果想要得到所有的<a>标签,或是通过名字得到比一个tag更多的内容的时候,就需要用到 Searching the tree 中描述的方法,比如: find_all()
 
-```
+```python
 soup.find_all('a')
 # [<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
 #  <a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
@@ -383,7 +383,7 @@ soup.find_all('a')
 
 tag的 .contents 属性可以将tag的子节点以列表的方式输出:
 
-```
+```python
 head_tag = soup.head
 head_tag
 # <head><title>The Dormouse's story</title></head>
@@ -400,7 +400,7 @@ title_tag.contents
 
 BeautifulSoup 对象本身一定会包含子节点,也就是说<html>标签也是 BeautifulSoup 对象的子节点:
 
-```
+```python
 len(soup.contents)
 # 1
 soup.contents[0].name
@@ -409,7 +409,7 @@ soup.contents[0].name
 
 字符串没有 .contents 属性,因为字符串没有子节点:
 
-```
+```python
 text = title_tag.contents[0]
 text.contents
 # AttributeError: 'NavigableString' object has no attribute 'contents'
@@ -417,7 +417,7 @@ text.contents
 
 通过tag的 .children 生成器,可以对tag的子节点进行循环:
 
-```
+```python
 for child in title_tag.children:
     print(child)
     # The Dormouse's story
@@ -427,14 +427,14 @@ for child in title_tag.children:
 
 .contents 和 .children 属性仅包含tag的直接子节点.例如,<head>标签只有一个直接子节点<title>
 
-```
+```python
 head_tag.contents
 # [<title>The Dormouse's story</title>]
 ```
 
 但是<title>标签也包含一个子节点:字符串 “The Dormouse’s story”,这种情况下字符串 “The Dormouse’s story”也属于<head>标签的子孙节点. .descendants 属性可以对所有tag的子孙节点进行递归循环 [[5\]](https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id92) :
 
-```
+```python
 for child in head_tag.descendants:
     print(child)
     # <title>The Dormouse's story</title>
@@ -443,7 +443,7 @@ for child in head_tag.descendants:
 
 上面的例子中, <head>标签只有一个子节点,但是有2个子孙节点:<head>节点和<head>的子节点, BeautifulSoup 有一个直接子节点(<html>节点),却有很多子孙节点:
 
-```
+```python
 len(list(soup.children))
 # 1
 len(list(soup.descendants))
@@ -454,14 +454,14 @@ len(list(soup.descendants))
 
 如果tag只有一个 NavigableString 类型子节点,那么这个tag可以使用 .string 得到子节点:
 
-```
+```python
 title_tag.string
 # u'The Dormouse's story'
 ```
 
 如果一个tag仅有一个子节点,那么这个tag也可以使用 .string 方法,输出结果与当前唯一子节点的 .string 结果相同:
 
-```
+```python
 head_tag.contents
 # [<title>The Dormouse's story</title>]
  
@@ -471,7 +471,7 @@ head_tag.string
 
 如果tag包含了多个子节点,tag就无法确定 .string 方法应该调用哪个子节点的内容, .string 的输出结果是 None :
 
-```
+```python
 print(soup.html.string)
 # None
 ```
@@ -480,7 +480,7 @@ print(soup.html.string)
 
 如果tag中包含多个字符串 [[2\]](https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id89) ,可以使用 .strings 来循环获取:
 
-```
+```python
 for string in soup.strings:
     print(repr(string))
     # u"The Dormouse's story"
@@ -501,7 +501,7 @@ for string in soup.strings:
 
 输出的字符串中可能包含了很多空格或空行,使用 .stripped_strings 可以去除多余空白内容:
 
-```
+```python
 for string in soup.stripped_strings:
     print(repr(string))
     # u"The Dormouse's story"

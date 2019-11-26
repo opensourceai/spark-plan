@@ -13,7 +13,7 @@ Scrapy是一个快速的高级Web爬网和Web爬网框架，用于爬网网站�
 为了向您展示Scrapy带来的好处，我们将通过最简单的运行的方法向您介绍Scrapy Spider的示例。
 
 以下是在分页之后从网站http://quotes.toscrape.com抓取著名报价的代码：
-```
+```python
 import scrapy
 
 class QuotesSpider(scrapy.Spider):
@@ -50,13 +50,13 @@ class QuotesSpider(scrapy.Spider):
 
 将其放在文本文件中，将其命名为quotes_spider.py之类的名称，然后使用runspider命令运行：
 
-```
+```shell
 scrapy runspider quotes_spider.py -o quotes.json
 ```
 
 完成此操作后，您将在quotes.json文件中具有JSON格式的引号列表，其中包含文本和作者，如下所示（此处重新格式化以提高可读性）：
 
-```
+```shell
 [{
     "author": "Jane Austen",
     "text": "\u201cThe person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.\u201d"
@@ -132,7 +132,7 @@ Scrapy在CPython（默认Python实现）和PyPy（从PyPy 5.9开始）下的Pyth
 
 要使用conda安装Scrapy，请运行：
 
-```
+```shell
 conda install -c conda-forge scrapy
 ```
 
@@ -140,7 +140,7 @@ conda install -c conda-forge scrapy
 
 另外，如果您已经熟悉Python软件包的安装，则可以使用以下方法从PyPI安装Scrapy及其依赖项：
 
-```
+```shell
 pip install Scrapy
 ```
 
@@ -176,13 +176,7 @@ Scrapy可以使用这些软件包的较早版本，但不能保证它会继续�
 
 其中一些软件包本身依赖于非Python软件包，这可能需要其他安装步骤，具体取决于您的平台。请查看下面特定于平台的指南。
 
-如果与这些依赖项有关的任何麻烦，请参考它们各自的安装说明：
 
-lxml安装
-
-密码学安装
-
- 
 
 使用虚拟环境（推荐）
 
@@ -194,7 +188,7 @@ Python软件包可以全局安装（也就是系统范围内），也可以安�
 
 要开始使用虚拟环境，请参阅virtualenv安装说明。 要在全球范围内安装它（在这里实际安装它会有所帮助），应该通过运行来解决：
 
-```
+```shell
 $ [sudo] pip install virtualenv
 ```
 
@@ -224,7 +218,7 @@ Tips：如果使用Linux或OS X，则virtualenvwrapper是创建virtualenvs的便
 
 安装Anaconda或Miniconda后，请使用以下方法安装Scrapy：
 
-```
+```shell
 conda install -c conda-forge scrapy
 ```
 
@@ -240,7 +234,7 @@ conda install -c conda-forge scrapy
 
 要在Ubuntu（或基于Ubuntu的）系统上安装scrapy，您需要安装以下依赖项：
 
-```
+```shell
 sudo apt-get install python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev
 ```
 
@@ -255,7 +249,7 @@ sudo apt-get install python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev l
 
  如果您想在Python 3上安装scrapy，则还需要Python 3开发标头：
 
-```
+```shell
 sudo apt-get install python3 python3-dev
 ```
 
@@ -263,7 +257,7 @@ sudo apt-get install python3 python3-dev
 
 在virtualenv内，您可以使用pip安装Scrapy之后：
 
-```
+```shell
 pip install scrapy
 ```
 
@@ -273,7 +267,7 @@ pip install scrapy
 
 构建Scrapy的依赖项需要使用C编译器和开发标头。 在OS X上，这通常由Apple的Xcode开发工具提供。 要安装Xcode命令行工具，请打开一个终端窗口并运行：
 
-```
+```shell
 xcode-select --install
 ```
 
@@ -293,7 +287,7 @@ xcode-select --install
 
 更新您的PATH变量，以指出应在系统软件包之前使用自制软件软件包（如果将zsh用作默认外壳，则将.bashrc更改为.zshrc）：
 
-```
+```shell
 echo "export PATH=/usr/local/bin:/usr/local/sbin:$PATH" >> ~/.bashrc
 ```
 
@@ -301,7 +295,7 @@ echo "export PATH=/usr/local/bin:/usr/local/sbin:$PATH" >> ~/.bashrc
 
 重新加载.bashrc以确保已进行更改：
 
-```
+```shell
 source ~/.bashrc
 ```
 
@@ -309,7 +303,7 @@ source ~/.bashrc
 
 安装python：
 
-```
+```shell
 brew install python
 ```
 
@@ -317,7 +311,7 @@ brew install python
 
 最新版本的python已捆绑了pip，因此您无需单独安装。 如果不是这种情况，请升级python：
 
-```
+```shell
 brew update; brew upgrade python
 ```
 
@@ -337,7 +331,7 @@ virtualenv是可用于在python中创建虚拟环境的工具。 我们建议您
 
 这些解决方法中的任何一种之后，您都应该能够安装Scrapy：
 
-```
+```shell
 pip install Scrapy
 ```
 
@@ -365,7 +359,7 @@ AttributeError：“模块”对象没有属性“ OP_NO_TLSv1_1”
 
  
 
-```
+```shell
 […]
   File "[…]/site-packages/twisted/protocols/tls.py", line 63, in <module>
     from twisted.internet._sslverify import _setAcceptableProtocols
@@ -378,7 +372,7 @@ AttributeError: 'module' object has no attribute 'OP_NO_TLSv1_1'
 
 要安装您的Twisted版本支持的pyOpenSSL版本，请使用tls extra选项重新安装Twisted：
 
-```
+```shell
 pip install twisted[tls]
 ```
 
@@ -412,7 +406,7 @@ Scrapy用Python编写。如果您是该语言的新手，则可能首先要了�
 
 在开始抓取之前，您将必须设置一个新的Scrapy项目。 输入您要存储代码并运行的目录：
 
-```
+```shell
 scrapy startproject tutorial
 ```
 
@@ -447,7 +441,7 @@ Spider是您定义的类，Scrapy用于从网站（或一组网站）中获取�
 
 这是我们第一个Spider的代码。 将其保存在项目中tutorial / spiders目录下的一个名为quotes_spider.py的文件中：
 
-```
+```python
 import scrapy
  
  
@@ -494,13 +488,13 @@ parse（）方法通常解析响应，提取刮取的数据作为字典，还查
 
 要使我们的Spider工作，请转到项目的顶级目录并运行：
 
-```
+```shell
 scrapy crawl quotes
 ```
 
 此命令运行带有我们刚刚添加的名称引号的Spider，它将发送对quotes.toscrape.com域的一些请求。 您将获得类似于以下的输出：
 
-```
+```shell
 ... (omitted for brevity)
 2016-12-16 21:24:05 [scrapy.core.engine] INFO: Spider opened
 2016-12-16 21:24:05 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
@@ -528,7 +522,7 @@ start_requests方法的快捷方式
 
 无需实现从URL生成scrapy.Request对象的start_requests（）方法，您只需定义带有URL列表的start_urls类属性即可。 然后，start_requests（）的默认实现将使用此列表来为您的Spider创建初始请求：
 
-```
+```python
 import scrapy
  
  
@@ -552,13 +546,13 @@ class QuotesSpider(scrapy.Spider):
 
 学习如何使用Scrapy提取数据的最好方法是使用Scrapy shell尝试选择器。 运行：
 
-```
+```shell
 scrapy shell 'http://quotes.toscrape.com/page/1/'
 ```
 
 您将看到类似以下内容
 
-```
+```shell
 [ ... Scrapy log here ... ]
 2016-09-19 12:09:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://quotes.toscrape.com/page/1/> (referer: None)
 [s] Available Scrapy objects:
@@ -578,7 +572,7 @@ scrapy shell 'http://quotes.toscrape.com/page/1/'
 
 使用shell，您可以尝试使用带有响应对象的CSS选择元素：
 
-```
+```python
 >>> response.css('title')
 [<Selector xpath='descendant-or-self::title' data='<title>Quotes to Scrape</title>'>]
 ```
@@ -589,7 +583,7 @@ scrapy shell 'http://quotes.toscrape.com/page/1/'
 
 要从上面的标题中提取文本，您可以执行以下操作：
 
-```
+```python
 >>> response.css('title::text').getall()
 ['Quotes to Scrape']
 ```
@@ -607,14 +601,14 @@ scrapy shell 'http://quotes.toscrape.com/page/1/'
 
 另一件事是，调用.getall（）的结果是一个列表：选择器有可能返回多个结果，因此我们将它们全部提取出来。 当您知道只想要第一个结果时，在这种情况下，您可以执行以下操作：
 
-```
+```python
 >>> response.css('title::text').get()
 'Quotes to Scrape'
 ```
 
 或者，您可以编写：
 
-```
+```python
 >>> response.css('title::text')[0].get()
 'Quotes to Scrape'
 ```
@@ -631,7 +625,7 @@ scrapy shell 'http://quotes.toscrape.com/page/1/'
 
  
 
-```
+```python
 >>> response.css('title::text').re(r'Quotes.*')
 ['Quotes to Scrape']
 >>> response.css('title::text').re(r'Q\w+')
@@ -654,7 +648,7 @@ XPath：简要介绍
 
 除了CSS，Scrapy选择还支持使用XPath表达式：
 
-```
+```sehll
 >>> response.xpath('//title')
 [<Selector xpath='//title' data='<title>Quotes to Scrape</title>'>]
 >>> response.xpath('//title/text()').get()
@@ -671,7 +665,7 @@ XPath表达式非常强大，并且是Scrapy Selectors的基础。实际上，CS
 
 提取报价和作者
 
-```
+```html
 http://quotes.toscrape.com中的每个引用都由如下所示的HTML元素表示：<div class="quote">
     <span class="text">“The world as we have created it is a process of our
     thinking. It cannot be changed without changing our thinking.”</span>
@@ -691,25 +685,25 @@ http://quotes.toscrape.com中的每个引用都由如下所示的HTML元素表�
 
 让我们打开scrapy shell，玩一会儿，找出如何提取所需的数据：
 
-```
+```shell
 $ scrapy shell 'http://quotes.toscrape.com'
 ```
 
 我们获得带有HTML报价的选择器的列表，其中包括：
 
-```
+```shell
 >>> response.css("div.quote")
 ```
 
 上面的查询返回的每个选择器都允许我们在其子元素上运行进一步的查询。 让我们将第一个选择器分配给变量，以便我们可以直接在特定引号上运行CSS选择器：
 
-```
+```shell
 >>> quote = response.css("div.quote")[0]
 ```
 
 现在，让我们使用刚刚创建的quote对象从该报价中提取文本，作者和标签：
 
-```
+```shell
 >>> text = quote.css("span.text::text").get()
 >>> text
 '“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”'
@@ -720,7 +714,7 @@ $ scrapy shell 'http://quotes.toscrape.com'
 
 鉴于标签是字符串列表，我们可以使用.getall（）方法来获取所有标签：
 
-```
+```shell
 >>> tags = quote.css("div.tags a.tag::text").getall()
 >>> tags
 ['change', 'deep-thoughts', 'thinking', 'world']
@@ -728,7 +722,7 @@ $ scrapy shell 'http://quotes.toscrape.com'
 
 在弄清楚如何提取每一位之后，我们现在可以遍历所有引号元素并将它们放到Python字典中：
 
-```
+```shell
 >>> for quote in response.css("div.quote"):
 ...     text = quote.css("span.text::text").get()
 ...     author = quote.css("small.author::text").get()
@@ -748,7 +742,7 @@ $ scrapy shell 'http://quotes.toscrape.com'
 
 Scrapy Spider通常会生成许多字典，其中包含从页面提取的数据。 为此，我们在回调中使用yield Python关键字，如下所示：
 
-```
+```python
 import scrapy
  
  
@@ -783,7 +777,7 @@ class QuotesSpider(scrapy.Spider):
 
 存储抓取数据的最简单方法是使用Feed导出，并使用以下命令：
 
-```
+```shell
 scrapy crawl quotes -o quotes.json
 ```
 
@@ -797,7 +791,7 @@ scrapy crawl quotes -o quotes.json
 
 您还可以使用其他格式，例如JSON Lines：
 
-```
+```shell
 scrapy crawl quotes -o quotes.jl
 ```
 
@@ -823,7 +817,7 @@ JSON Lines格式很有用，因为它像流一样，您可以轻松地向其添�
 
 首先是将链接提取到我们要关注的页面。 检查我们的页面，我们可以看到指向下一页的链接，带有以下标记：
 
-```
+```html
 <ul class="pager">
     <li class="next">
         <a href="/page/2/">Next <span aria-hidden="true">&rarr;</span></a>
@@ -833,28 +827,28 @@ JSON Lines格式很有用，因为它像流一样，您可以轻松地向其添�
 
 我们可以尝试将其提取到shell中：
 
-```
+```shell
 >>> response.css('li.next a').get()
 '<a href="/page/2/">Next <span aria-hidden="true">→</span></a>'
 ```
 
 这获得了anchor元素，但我们需要属性href。 为此，Scrapy支持CSS扩展，可让您选择属性内容，如下所示：
 
-```
+```shell
 >>> response.css('li.next a::attr(href)').get()
 '/page/2/'
 ```
 
 还有一个attrib属性可用
 
-```
+```shell
 >>> response.css('li.next a').attrib['href']
 '/page/2'
 ```
 
 现在让我们看一下我们的Spider，将其修改为以递归方式链接到下一页的链接，并从中提取数据：
 
-```
+```python
 import scrapy
  
  
@@ -898,7 +892,7 @@ class QuotesSpider(scrapy.Spider):
 
 作为创建请求对象的快捷方式，您可以使用response.follow：
 
-```
+```python
 import scrapy
  
  
@@ -927,7 +921,7 @@ class QuotesSpider(scrapy.Spider):
 
 您也可以将选择器传递给response.follow而不是字符串。 该选择器应提取必要的属性：
 
-```
+```python
 for href in response.css('li.next a::attr(href)'):
     yield response.follow(href, callback=self.parse)
 ```
@@ -936,7 +930,7 @@ for href in response.css('li.next a::attr(href)'):
 
 对于<a>元素，有一个快捷方式：response.follow自动使用其href属性。 因此，代码可以进一步缩短：
 
-```
+```python
 for a in response.css('li.next a'):
     yield response.follow(a, callback=self.parse)
 ```
@@ -949,7 +943,7 @@ for a in response.css('li.next a'):
 
 这是另一个说明回调和后续链接的爬虫链接，这次是用于抓取作者信息：
 
-```
+```python
 import scrapy
  
  
@@ -1012,7 +1006,7 @@ parse_author回调定义了一个辅助函数，用于从CSS查询中提取和�
 
 您可以在运行爬虫时使用-a选项为爬虫提供命令行参数：
 
-```
+```shell
 scrapy crawl quotes -o quotes-humor.json -a tag=humor
 ```
 
@@ -1024,7 +1018,7 @@ scrapy crawl quotes -o quotes-humor.json -a tag=humor
 
  
 
-```
+```shell
 import scrapy
  
  
@@ -1067,3 +1061,4 @@ quotesbot项目可在以下网址获得：https：//github.com/scrapy/quotesbot�
  
 
  
+
