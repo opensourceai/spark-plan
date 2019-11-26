@@ -51,10 +51,9 @@ driver.find_elements_by_xpath#抓取所有的标签 注意是elements
 
 
 
-```
+```python
 info.find_element_by_xpath(".//div[@class='hd']/a/span[@class='title']").text#当前标签下的电影名字 是文本，获取内容用.text
 info.find_element_by_xpath(".//div[@class='hd']/a").get_attribute("href")#获取当前标签下的链接 是属性内的值 用.get_attribute("href")
 ```
 
 使用完后需要关闭
-
