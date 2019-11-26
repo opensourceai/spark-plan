@@ -2,37 +2,43 @@
 
 邮箱：1422127065@qq.com
 
-**python高级之初识socket网络编程**
+**python 高级初识socket网络编程**
 
-简单实现服务端和客户端之间的通信
+简单实现服务端和客户端之间的通信 实现多人聊天
 
 首先创建一个server.py
 
 ```python
 import socket
+import threading
 
 server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 host=socket.gethostname()
 port=8888
 server.bind((host,port))
 server.listen()
+def handle_socket(sock,addr):
+    while True:
+        client_data=sock.recv(1024)
+        print(client_data.decode("utf8"))
+        new_data = input("请输入聊天信息\n")
+        sock.send(new_data.encode("utf8"))
 while True:
-    socket,addr=server.accept()
     # 获取从客户端发送的数据
     # 一次获取1k的数据
     # data为byte类型
-    data=socket.recv(1024)#接收来自客户端的信息
-    #发送的信息必须是byte类型  这里是发送到客户端的信息
-    socket.send("hello {}".format(data.decode("utf8")).encode("utf-8"))
-    print(data.decode("utf8"))
-    print(addr)#打印地址
-    socket.close()
+    sock, addr = server.accept()
+    # 多线程实现多人聊天
+    client_threde=threading.Thread(target=handle_socket,args=(sock,addr))
+    client_threde.start()
+
+
 
 ```
 
 
 
-接着创建一个client段 
+接着创建一个client端
 
 client.py
 
@@ -45,34 +51,27 @@ port = 8888
 # 连接服务，指定主机和端口
 client.connect((host, port))
 
-client.send("ceshi".encode("utf-8"))
-# 接收小于 1024 字节的数据 这里接收的是来自服务端的数据
-msg = client.recv(1024)
-client.close()
-print(msg.decode("utf8"))
+while True:
+    client_data = input("请输入你的聊天信息\n")
+    client.send(client_data.encode("utf8"))
+    server_data = client.recv(1024)
+    print(server_data.decode("utf8"))
+
 ```
 
 先运行 server.py  控制台会处于等待状态
 
 接着运行 client.py发送数据
 
-client.py 
-
-#output   
-
-hello ceshi
 
 
+利用多线程实现多个客服端的连接 实现多人聊天模式
 
-server.py 
-
-#output   
-
-客户端可多次运行查看服务端打印数据
+每次运行一个客户端都会开启一个新的线程
 
 
 
 这里不对socket理论不做过多的赘述
 
-有兴趣可以看一下 https://www.cnblogs.com/yunlong-study/p/9283529.html 
+
 
