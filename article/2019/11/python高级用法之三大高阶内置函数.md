@@ -1,6 +1,6 @@
-python高级用法之  三大高阶内置函数介绍
+##### python高级用法之三大高阶内置函数
 
-1 map函数
+###### map函数
 
 ​	map(square,list) map函数接收的两个参数 一个函数 一个序列
 
@@ -32,7 +32,7 @@ print(list(map_test(lambda x:x.upper(),"amanda")))
 print(list(map(lambda x:x.upper(),"amanda")))
 ```
 
-2 filter函数
+###### filter函数
 
 ​	 filter函数也是接收一个函数和一个序列的高阶函数，其主要功能是过滤。其返回值也是迭代器对象 
 
@@ -55,7 +55,7 @@ print(filter_test(lambda x:x.islower(),names))
 print(list(filter(lambda x:x.islower(),names)))
 ```
 
-3 reduce函数
+###### reduce函数
 
  reduce函数也是一个参数为函数，一个为可迭代对象的高阶函数，其返回值为一个值而不是迭代器对象，故其常用与叠加、叠乘等 
 
