@@ -6,7 +6,8 @@ python高级用法之  三大高阶内置函数介绍
 
 功能说明 ：利用传进去的函数将序列的值进行处理在返回一个列表内，但是其返回值为map 一个迭代器对象 需要转化为list，原理如下图
 
-![image-20191117193552078](C:\Users\Hq\AppData\Roaming\Typora\typora-user-images\image-20191117193552078.png)代码示例
+![image-20191117193552078](img/python-map.png)
+代码示例
 
 ```
 num=[1,2,3,4,5]
@@ -35,10 +36,10 @@ print(list(map(lambda x:x.upper(),"amanda")))
 
 ​	 filter函数也是接收一个函数和一个序列的高阶函数，其主要功能是过滤。其返回值也是迭代器对象 
 
-![image-20191117193727436](C:\Users\Hq\AppData\Roaming\Typora\typora-user-images\image-20191117193727436.png)
+![image-20191117193552078](img/python-filter.png)
 
 
-
+代码示例
 ```python
 names=["Alex","amanda","xiaowu"]
 #filter函数机制
@@ -58,7 +59,7 @@ print(list(filter(lambda x:x.islower(),names)))
 
  reduce函数也是一个参数为函数，一个为可迭代对象的高阶函数，其返回值为一个值而不是迭代器对象，故其常用与叠加、叠乘等 
 
-![image-20191117193807736](C:\Users\Hq\AppData\Roaming\Typora\typora-user-images\image-20191117193807736.png)
+![image-20191117193807736](img/python-reduce.png)
 
 ```python
 #reduce函数不是内置函数，而是在模块functools中的函数，故需要导入
