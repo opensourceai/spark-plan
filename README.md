@@ -43,10 +43,12 @@
 - [机器学习常用损失函数](article/2019/11/机器学习常用损失函数.md)
 - [超深网络和神经正切核(NTK)](article/2019/11/超深网络和神经正切核(NTK).md)
 - [随机森林参数调优指南](article/2019/11/随机森林参数调优指南.md)
+- [2019年开始的顶级AI项目和机器学习研究论文](article/2019/12/2019年开始的顶级AI项目和机器学习研究论文.md)
 - [Web开发人员的最佳朋友--AI](article/2019/12/Web开发人员的最佳朋友--AI.md)
 - [了解医学影像中的转移学习](article/2019/12/了解医学影像中的转移学习.md)
 - [从2019年起10篇关于计算机视觉的前沿研究论文](article/2019/12/从2019年起10篇关于计算机视觉的前沿研究论文.md)
 - [医疗保健发展ML的经验教训](article/2019/12/医疗保健发展ML的经验教训.md)
+- [自2019年以来强化学习突破性的研究](article/2019/12/自2019年以来强化学习突破性的研究.md)
 
 ### 论文
 - [Improving-forecasting-accuracy-of-time-series-data-using-a-new-ARIMA-ANN-hybrid-method-and-empirical-mode-decomposition](paper/Improving-forecasting-accuracy-of-time-series-data-using-a-new-ARIMA-ANN-hybrid-method-and-empirical-mode-decomposition.md)
